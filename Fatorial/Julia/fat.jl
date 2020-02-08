@@ -4,7 +4,7 @@ using Printf
 Data de criacao  : 03/02/2020
 Data de modificao: 00/00/0000
 --------------------------------------------------------
-fat : Caclulo do fatorial de um numero
+fat : Calculo do fatorial de um numero
 --------------------------------------------------------
 paramentro de entra:
 --------------------------------------------------------
@@ -37,7 +37,7 @@ end
 Data de criacao  : 03/02/2020
 Data de modificao: 00/00/0000
 --------------------------------------------------------
-fat : Caclulo do fatorial de um numero
+fat : Calculo do fatorial de um numero
 --------------------------------------------------------
 paramentro de entra:
 --------------------------------------------------------
@@ -71,17 +71,19 @@ function fat2(n)
 end
 
 
-function main()
-    n = 10
-    a = fat1(n)
-    s = @sprintf("Fatorial de %d! eh %d.",n,a)
+function main(nSample)
+    local a1,a2 # variaveis dentro de um loop estão aparentemente em outro escopo
+                # como se fossem uma funcao
+    n  = 20
+    for i = 0:nSample-1
+      a1 = fat1(n)            
+      a2 = fat2(n)
+    end
+    s = @sprintf("Fatorial de %d! eh %d.",n,a1)
     println(s)
-    
-    a = fat2(n)
-    s = @sprintf("Fatorial de %d! eh %d.",n,a)
+    s = @sprintf("Fatorial de %d! eh %d.",n,a2)
     println(s)
 end
 
-@time begin
-    main()
-end
+nSample = 100000000
+@time main(nSample)
